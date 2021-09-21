@@ -14,23 +14,18 @@ type Configuration struct {
 	ReadTimeout  string
 	WriteTimeout string
 	// 数据库设置
-	DbLogMode      string
-	DbType         string
-	DbName         string
-	DbHost         string
-	DbPort         string
-	DbUser         string
-	DbPassword     string
-	DbMaxIdleConns string
-	DbMaxOpenConns string
-	// redis 设置
-	RedisCluster  string
-	RedisHost     string
-	RedisPort     string
-	RedisPassword string
-	TLSOpen       string
-	TLSCrt        string
-	TLSKey        string
+	//DbLogMode      string
+	//DbType         string
+	//DbName         string
+	//DbHost         string
+	//DbPort         string
+	//DbUser         string
+	//DbPassword     string
+	//DbMaxIdleConns string
+	//DbMaxOpenConns string
+	TLSOpen string
+	TLSCrt  string
+	TLSKey  string
 	// 跨域设置
 	AccessControlAllowOrigin  string
 	AccessControlAllowHeaders string
