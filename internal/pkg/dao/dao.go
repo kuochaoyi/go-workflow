@@ -1,12 +1,23 @@
-package gorm
+package dao
 
 import (
 	"fmt"
 	"os"
 
+	config "github.com/kuochaoyi/go-workflow/workflow-config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
+
+var db *gorm.DB
+
+// Model 其它数据结构的公共部分
+type Model struct {
+	ID int `gorm:"primary_key" json:"id,omitempty"`
+}
+
+// 配置
+var conf = *config.Config
 
 func New() (*gorm.DB, error) {
 	const config string = "host=%s port=%s user=%s password=%s dbname=%s sslmode=%s"
