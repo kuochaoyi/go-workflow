@@ -3,18 +3,23 @@ module github.com/kuochaoyi/go-workflow
 go 1.17
 
 require (
-	github.com/go-sql-driver/mysql v1.6.0
-	github.com/go-workflow/go-workflow v0.0.0-20200122043112-85255031ec8d
 	github.com/jinzhu/gorm v1.9.16
 	github.com/mumushuiding/util v0.0.0-20210203080010-04699a081184
 	github.com/robfig/cron v1.2.0
+	github.com/swaggo/swag v1.7.1
 	gorm.io/driver/postgres v1.1.1
 	gorm.io/gorm v1.21.15
-	gorm.io/plugin/dbresolver v1.1.0
 )
 
 require (
-	github.com/go-redis/redis v6.15.9+incompatible // indirect
+	github.com/KyleBanks/depth v1.2.1 // indirect
+	github.com/PuerkitoBio/purell v1.1.1 // indirect
+	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
+	github.com/go-openapi/jsonpointer v0.19.5 // indirect
+	github.com/go-openapi/jsonreference v0.19.5 // indirect
+	github.com/go-openapi/spec v0.20.3 // indirect
+	github.com/go-openapi/swag v0.19.14 // indirect
+	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.10.0 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
@@ -25,9 +30,13 @@ require (
 	github.com/jackc/pgx/v4 v4.13.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.2 // indirect
-	github.com/onsi/ginkgo v1.16.4 // indirect
-	github.com/onsi/gomega v1.16.0 // indirect
+	github.com/josharian/intern v1.0.0 // indirect
+	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/tealeg/xlsx v1.0.5 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
+	golang.org/x/net v0.0.0-20210428140749-89ef3d95e781 // indirect
+	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
 	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/tools v0.1.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
