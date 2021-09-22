@@ -68,26 +68,26 @@ func GetResourceByID(id int) (*flow.Node, int, error) {
 }
 
 // SaveProcdefByToken SaveProcdefByToken
-func (p *Procdef) SaveProcdefByToken(token string) (int, error) {
-	// 根据 token 获取用户信息
-	userinfo, err := GetUserinfoFromRedis(token)
-	if err != nil {
-		return 0, err
-	}
-	if len(userinfo.Company) == 0 {
-		return 0, errors.New("保存在redis中的【用户信息 userinfo】字段 company 不能为空")
-	}
-	if len(userinfo.Username) == 0 {
-		return 0, errors.New("保存在redis中的【用户信息 userinfo】字段 username 不能为空")
-	}
-	if len(userinfo.ID) == 0 {
-		return 0, errors.New("保存在redis中的【用户信息 userinfo】字段 ID 不能为空")
-	}
-	p.Company = userinfo.Company
-	p.Userid = userinfo.ID
-	p.Username = userinfo.Username
-	return p.SaveProcdef()
-}
+// func (p *Procdef) SaveProcdefByToken(token string) (int, error) {
+// 	// 根据 token 获取用户信息
+// 	userinfo, err := GetUserinfoFromRedis(token)
+// 	if err != nil {
+// 		return 0, err
+// 	}
+// 	if len(userinfo.Company) == 0 {
+// 		return 0, errors.New("保存在redis中的【用户信息 userinfo】字段 company 不能为空")
+// 	}
+// 	if len(userinfo.Username) == 0 {
+// 		return 0, errors.New("保存在redis中的【用户信息 userinfo】字段 username 不能为空")
+// 	}
+// 	if len(userinfo.ID) == 0 {
+// 		return 0, errors.New("保存在redis中的【用户信息 userinfo】字段 ID 不能为空")
+// 	}
+// 	p.Company = userinfo.Company
+// 	p.Userid = userinfo.ID
+// 	p.Username = userinfo.Username
+// 	return p.SaveProcdef()
+// }
 
 // SaveProcdef 保存
 func (p *Procdef) SaveProcdef() (id int, err error) {

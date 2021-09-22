@@ -1,11 +1,5 @@
 package service
 
-import (
-	"github.com/mumushuiding/util"
-
-	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
-)
-
 // UserInfo 用户信息
 type UserInfo struct {
 	Company string `json:"company"`
@@ -20,21 +14,21 @@ type UserInfo struct {
 }
 
 // GetUserinfoFromRedis GetUserinfoFromRedis
-func GetUserinfoFromRedis(token string) (*UserInfo, error) {
-	result, err := GetValFromRedis(token)
-	if err != nil {
-		return nil, err
-	}
-	// fmt.Println(result)
-	var userinfo = &UserInfo{}
-	err = util.Str2Struct(result, userinfo)
-	if err != nil {
-		return nil, err
-	}
-	return userinfo, nil
-}
+// func GetUserinfoFromRedis(token string) (*UserInfo, error) {
+// 	result, err := GetValFromRedis(token)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	// fmt.Println(result)
+// 	var userinfo = &UserInfo{}
+// 	err = util.Str2Struct(result, userinfo)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	return userinfo, nil
+// }
 
-// GetValFromRedis 从redis获取值
-func GetValFromRedis(key string) (string, error) {
-	return model.RedisGetVal(key)
-}
+// // GetValFromRedis 从redis获取值
+// func GetValFromRedis(key string) (string, error) {
+// 	return model.RedisGetVal(key)
+// }
