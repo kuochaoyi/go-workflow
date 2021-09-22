@@ -2,20 +2,13 @@ package dao
 
 import (
 	"log"
-	"strconv"
-
-	config "github.com/kuochaoyi/go-workflow/workflow-config"
-	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
 
 	"github.com/jinzhu/gorm"
+	config "github.com/kuochaoyi/go-workflow/workflow-config"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
 )
 
 var db *gorm.DB
-
-// Model 其它数据结构的公共部分
-type Model struct {
-	ID int `gorm:"primary_key" json:"id,omitempty"`
-}
 
 // 配置
 var conf = *config.Config
@@ -50,27 +43,35 @@ func Setup() {
 	//db.DB().SetMaxOpenConns(open)
 
 	//db.Set("gorm:table_options", "ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;").AutoMigrate(&model.Procdef{}).
-	db.AutoMigrate(&model.Procdef{}).
-		AutoMigrate(&model.Execution{}).AutoMigrate(&model.Task{}).
-		AutoMigrate(&model.ProcInst{}).AutoMigrate(&model.Identitylink{}).
-		AutoMigrate(&model.ExecutionHistory{}).
-		AutoMigrate(&model.IdentitylinkHistory{}).
-		AutoMigrate(&model.ProcInstHistory{}).
-		AutoMigrate(&model.TaskHistory{}).
-		AutoMigrate(&model.ProcdefHistory{})
-	db.Model(&model.Procdef{}).AddIndex("idx_id", "id")
-	db.Model(&model.ProcInst{}).AddIndex("idx_id", "id")
-	db.Model(&model.Execution{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
-	db.Model(&model.Identitylink{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
-	db.Model(&model.Task{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
-	//---------------------历史纪录------------------------------
-	db.Model(&model.ProcInstHistory{}).AddIndex("idx_id", "id")
-	db.Model(&model.ExecutionHistory{}).AddForeignKey("proc_inst_id", "proc_inst_history(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
-	db.Model(&model.IdentitylinkHistory{}).AddForeignKey("proc_inst_id", "proc_inst_history(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
-	db.Model(&model.TaskHistory{}).
-		//  AddForeignKey("proc_inst_id", "proc_inst_history(id)", "CASCADE", "RESTRICT").
-		AddIndex("idx_id", "id")
-	// db.Model(&Comment{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT")
+	db.AutoMigrate(&model.Procdef{})
+	db.AutoMigrate(&model.Execution{})
+	db.AutoMigrate(&model.Task{})
+	db.AutoMigrate(&model.ProcInst{})
+	db.AutoMigrate(&model.Identitylink{})
+	db.AutoMigrate(&model.ExecutionHistory{})
+	db.AutoMigrate(&model.IdentitylinkHistory{})
+	db.AutoMigrate(&model.ProcInstHistory{})
+	db.AutoMigrate(&model.TaskHistory{})
+	db.AutoMigrate(&model.ProcdefHistory{})
+	// this is now gorm write
+	db.Migrator().CreateIndex(&model.Procdef{}, "idx_id")
+	db.Migrator().CreateIndex(&model.Procdef{}, "id")
+
+	/*
+		db.Model(&model.Procdef{}).AddIndex("idx_id", "id")
+		db.Model(&model.ProcInst{}).AddIndex("idx_id", "id")
+		db.Model(&model.Execution{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
+		db.Model(&model.Identitylink{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
+		db.Model(&model.Task{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
+		//---------------------历史纪录------------------------------
+		db.Model(&model.ProcInstHistory{}).AddIndex("idx_id", "id")
+		db.Model(&model.ExecutionHistory{}).AddForeignKey("proc_inst_id", "proc_inst_history(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
+		db.Model(&model.IdentitylinkHistory{}).AddForeignKey("proc_inst_id", "proc_inst_history(id)", "CASCADE", "RESTRICT").AddIndex("idx_id", "id")
+		db.Model(&model.TaskHistory{}).
+			//  AddForeignKey("proc_inst_id", "proc_inst_history(id)", "CASCADE", "RESTRICT").
+			AddIndex("idx_id", "id")
+		// db.Model(&Comment{}).AddForeignKey("proc_inst_id", "proc_inst(id)", "CASCADE", "RESTRICT")
+	*/
 }
 
 // CloseDB closes database connection (unnecessary)

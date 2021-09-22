@@ -35,6 +35,8 @@ type Task struct {
 	IsFinished bool   `gorm:"default:false" json:"isFinished"`
 }
 
+var db *gorm.DB
+
 // NewTask 新建任务
 func (t *Task) NewTask() (int, error) {
 	err := db.Create(t).Error

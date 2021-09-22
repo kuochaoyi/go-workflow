@@ -12,12 +12,12 @@ func New() (*gorm.DB, error) {
 	const config string = "host=%s port=%s user=%s password=%s dbname=%s sslmode=%s"
 
 	sources := fmt.Sprintf(config,
-		os.Getenv("SOURCES_HOST"),
-		os.Getenv("SOURCES_PORT"),
-		os.Getenv("SOURCES_USER"),
-		os.Getenv("SOURCES_PASSWORD"),
-		os.Getenv("SOURCES_DATABASE"),
-		os.Getenv("SOURCES_SSLMODE"),
+		os.Getenv("PG_HOST"),
+		os.Getenv("PG_PORT"),
+		os.Getenv("PG_USER"),
+		os.Getenv("PG_PASSWORD"),
+		os.Getenv("PG_DATABASE"),
+		os.Getenv("PG_SSLMODE"),
 	)
 
 	db, err := gorm.Open(postgres.New(postgres.Config{
