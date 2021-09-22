@@ -29,7 +29,7 @@ func crossOrigin(h http.HandlerFunc) http.HandlerFunc {
 func main() {
 	mux := router.Mux
 	// 启动数据库连接
-	model.New()
+	model.Setup()
 	// 启动定时任务
 	service.CronJobs()
 	// 启动服务
