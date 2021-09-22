@@ -6,9 +6,10 @@ import (
 	"time"
 
 	"github.com/jinzhu/gorm"
+	"github.com/kuochaoyi/go-workflow/internal/pkg/dao"
 
-	"github.com/go-workflow/go-workflow/workflow-engine/flow"
-	"github.com/go-workflow/go-workflow/workflow-engine/model"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/flow"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
 	"github.com/mumushuiding/util"
 )
 
@@ -132,7 +133,7 @@ func (p *ProcessReceiver) StartProcessInstanceByID(variable *map[string]string) 
 	// fmt.Printf("获取流程定义耗时：%v", time.Since(times))
 	//--------以下需要添加事务-----------------
 	step := 0 // 0 为开始节点
-	tx := model.GetTx()
+	tx := dao.GetTx()
 	// 新建流程实例
 	var procInst = model.ProcInst{
 		ProcDefID:     prodefID,
@@ -283,7 +284,7 @@ func MoveFinishedProcInstToHistory() error {
 		if err != nil {
 			return err
 		}
-		tx := model.GetTx()
+		tx := dao.GetTx()
 		// 流程实例的task移至历史纪录
 		err = copyTaskToHistoryByProInstID(v.ID, tx)
 		if err != nil {

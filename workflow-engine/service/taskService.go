@@ -8,11 +8,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-workflow/go-workflow/workflow-engine/flow"
+	"github.com/kuochaoyi/go-workflow/internal/pkg/dao"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/flow"
 
 	"github.com/jinzhu/gorm"
 
-	"github.com/go-workflow/go-workflow/workflow-engine/model"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
 	"github.com/mumushuiding/util"
 )
 
@@ -84,7 +85,7 @@ func CompleteByToken(token string, receiver *TaskReceiver) error {
 // Complete Complete
 // 审批
 func Complete(taskID int, userID, username, company, comment, candidate string, pass bool) error {
-	tx := model.GetTx()
+	tx := dao.GetTx()
 	err := CompleteTaskTx(taskID, userID, username, company, comment, candidate, pass, tx)
 	if err != nil {
 		tx.Rollback()
@@ -258,7 +259,7 @@ func WithDrawTask(taskID, procInstID int, userID, username, company, comment str
 	}
 	fmt.Printf("判断是否可以撤回,耗时：%v\n", time.Since(timesx))
 	timesx = time.Now()
-	tx := model.GetTx()
+	tx := dao.GetTx()
 	// 更新当前的任务
 	currentTask.IsFinished = true
 	err := currentTask.UpdateTx(tx)

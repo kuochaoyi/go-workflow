@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/go-workflow/go-workflow/workflow-engine/model"
 	"github.com/jinzhu/gorm"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
 	"github.com/mumushuiding/util"
 )
 

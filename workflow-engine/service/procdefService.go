@@ -5,11 +5,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-workflow/go-workflow/workflow-engine/flow"
+	"github.com/kuochaoyi/go-workflow/internal/pkg/dao"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/flow"
 
 	"github.com/mumushuiding/util"
 
-	"github.com/go-workflow/go-workflow/workflow-engine/model"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/model"
 )
 
 var saveLock sync.Mutex
@@ -124,7 +125,7 @@ func SaveProcdef(p *model.Procdef) (id int, err error) {
 		p.Version = 1
 		return p.Save()
 	}
-	tx := model.GetTx()
+	tx := dao.GetTx()
 	// 保存新版本
 	p.Version = old.Version + 1
 	err = p.SaveTx(tx)

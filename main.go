@@ -7,12 +7,12 @@ import (
 	"strconv"
 	"time"
 
-	router "github.com/go-workflow/go-workflow/workflow-router"
+	router "github.com/kuochaoyi/go-workflow/workflow-router"
 
-	config "github.com/go-workflow/go-workflow/workflow-config"
+	config "github.com/kuochaoyi/go-workflow/workflow-config"
 
-	model "github.com/go-workflow/go-workflow/workflow-engine/model"
-	"github.com/go-workflow/go-workflow/workflow-engine/service"
+	model "github.com/kuochaoyi/go-workflow/internal/pkg/dao"
+	"github.com/kuochaoyi/go-workflow/workflow-engine/service"
 )
 
 // 配置
@@ -29,7 +29,7 @@ func crossOrigin(h http.HandlerFunc) http.HandlerFunc {
 func main() {
 	mux := router.Mux
 	// 启动数据库连接
-	model.Setup()
+	model.New()
 	// 启动定时任务
 	service.CronJobs()
 	// 启动服务
