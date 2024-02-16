@@ -1,6 +1,6 @@
 module github.com/kuochaoyi/go-workflow
 
-go 1.17
+go 1.20
 
 require (
 	github.com/jinzhu/gorm v1.9.16
