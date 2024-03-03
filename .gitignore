@@ -9,3 +9,5 @@ server.key
 
 .air.toml
 tmp/
+
+.idea/

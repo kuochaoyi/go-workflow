@@ -1,6 +1,6 @@
 module github.com/kuochaoyi/go-workflow
 
-go 1.21
+go 1.22
 
 toolchain go1.22.0
 
@@ -30,7 +30,7 @@ require (
 	github.com/lib/pq v1.10.2 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/tealeg/xlsx v1.0.5 // indirect
-	golang.org/x/crypto v0.19.0 // indirect
+	golang.org/x/crypto v0.20.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.18.0 // indirect

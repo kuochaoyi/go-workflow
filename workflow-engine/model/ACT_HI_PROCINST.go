@@ -193,7 +193,7 @@ func (p *ProcInst) Save() (int, error) {
 	return p.ID, nil
 }
 
-//SaveTx SaveTx
+// SaveTx SaveTx
 func (p *ProcInst) SaveTx(tx *gorm.DB) (int, error) {
 	if err := tx.Create(p).Error; err != nil {
 		tx.Rollback()
