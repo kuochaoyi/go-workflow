@@ -11,3 +11,4 @@ server.key
 tmp/
 
 .idea/
+.air.toml

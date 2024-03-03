@@ -12,7 +12,6 @@ import (
 	config "github.com/kuochaoyi/go-workflow/workflow-config"
 
 	model "github.com/kuochaoyi/go-workflow/internal/pkg/dao"
-	"github.com/kuochaoyi/go-workflow/workflow-engine/service"
 )
 
 // 配置
@@ -31,7 +30,7 @@ func main() {
 	// 启动数据库连接
 	model.Setup()
 	// 启动定时任务
-	service.CronJobs()
+	//service.CronJobs()
 	// 启动服务
 	readTimeout, err := strconv.Atoi(conf.ReadTimeout)
 	if err != nil {
